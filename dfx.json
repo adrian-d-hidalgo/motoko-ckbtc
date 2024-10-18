@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "dfx": "0.22.0",
+  "canisters": {
+    "backend": {
+      "type": "motoko",
+      "main": "backend/main.mo"
+    },
+    "internet-identity": {
+      "type": "custom",
+      "candid": "https://github.com/dfinity/internet-identity/releases/download/release-2024-10-01/internet_identity.did",
+      "wasm": "https://github.com/dfinity/internet-identity/releases/download/release-2024-10-01/internet_identity_dev.wasm.gz",
+      "remote": {
+        "id": {
+          "ic": "rdmx6-jaaaa-aaaaa-aaadq-cai"
+        }
+      },
+      "frontend": {}
+    },
+    "ckbtc-ledger": {
+      "type": "custom",
+      "candid": "tokens/ckbtc-ledger/ckbtc-ledger.did",
+      "wasm": "https://download.dfinity.systems/ic/d6d395a480cd6986b4788f4aafffc5c03a07e46e/canisters/ic-icrc1-ledger.wasm.gz"
+    },
+    "ckbtc-minter": {
+      "type": "custom",
+      "candid": "tokens/ckbtc-minter/ckbtc-minter.did",
+      "wasm": "https://download.dfinity.systems/ic/d6d395a480cd6986b4788f4aafffc5c03a07e46e/canisters/ic-ckbtc-minter.wasm.gz"
+    },
+    "ckbtc-kyt": {
+      "type": "custom",
+      "candid": "tokens/ckbtc-kyt/ckbtc-kyt.did",
+      "wasm": "https://download.dfinity.systems/ic/d6d395a480cd6986b4788f4aafffc5c03a07e46e/canisters/ic-ckbtc-kyt.wasm.gz"
+    }
+  },
+  "defaults": {
+    "build": {
+      "packtool": "mops sources"
+    }
+  }
+}

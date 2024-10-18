@@ -1,0 +1,36 @@
+{
+  "name": "azle-ckbtc",
+  "version": "0.1.0",
+  "license": "MIT",
+  "author": "Adrián Darío Hidalgo Flores",
+  "keywords": [
+    "azle",
+    "bitcoin",
+    "blockchain",
+    "btc",
+    "chain fusion",
+    "ckbtc",
+    "dapps",
+    "icp",
+    "internet computer",
+    "motoko",
+    "satoshi"
+  ],
+  "scripts": {
+    "postinstall": "npm run btc:install",
+    "btc:install": "sh ./scripts/bitcoin/install.sh",
+    "clean": "rm -rf .bitcoin && rm -rf .dfx && rm -rf .azle && rm -rf node_modules",
+    "btc:start": ".bitcoin/bin/bitcoind -conf=$(pwd)/bitcoin.conf -datadir=$(pwd)/.bitcoin/data --port=18444",
+    "btc:mint": "sh scripts/bitcoin/mint.sh $npm_config_address",
+    "icp:start": "dfx start --clean --enable-bitcoin",
+    "icp:canister:create": "dfx canister create --all",
+    "preicp:deploy:local": "npm run icp:canister:create",
+    "icp:deploy:local": "npm run icp:deploy:ckbtc && npm run icp:deploy:apps",
+    "icp:deploy:ckbtc": "sh ./scripts/ckbtc/ckbtc-deploy.sh",
+    "icp:deploy:apps": "sh ./scripts/apps/deploy-apps.sh"
+  },
+  "dependencies": {
+    "prettier": "^3.3.3",
+    "prettier-plugin-motoko": "^0.9.4"
+  }
+}
